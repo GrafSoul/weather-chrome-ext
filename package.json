@@ -2,7 +2,6 @@
   "name": "react-chrome-ext",
   "version": "1.0.0",
   "description": "Example of a simple Chrome browser extension",
-  "main": "index.js",
   "scripts": {
     "start": "webpack --watch --progress --config webpack.dev.js",
     "build": "webpack --watch --progress --config webpack.prod.js"
@@ -17,12 +16,10 @@
     "url": "https://github.com/GrafSoul/react-chrome-ext/issues"
   },
   "homepage": "https://github.com/GrafSoul/react-chrome-ext#readme",
-  "dependencies": {
+  "devDependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
-    "fontsource-roboto": "^4.0.0"
-  },
-  "devDependencies": {
+    "fontsource-roboto": "^4.0.0",
     "@types/chrome": "^0.0.178",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",

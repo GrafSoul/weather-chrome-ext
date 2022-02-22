@@ -8,14 +8,12 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-
 import {
   getWeatherIconSrc,
   fetchOpenWeatherData,
   OpenWeatherData,
   OpenWeatherTempScale,
 } from "../../utils/api";
-
 import "./WeatherCard.css";
 
 const WeatherCardContainer: React.FC<{
@@ -29,7 +27,7 @@ const WeatherCardContainer: React.FC<{
         <CardActions>
           {onDelete && (
             <Button color="secondary" onClick={onDelete}>
-              <Typography className="weather-card-body">Delete</Typography>
+              <Typography className="weatherCard-body">Delete</Typography>
             </Button>
           )}
         </CardActions>
@@ -60,8 +58,8 @@ const WeatherCard: React.FC<{
   if (cardState == "loading" || cardState == "error") {
     return (
       <WeatherCardContainer onDelete={onDelete}>
-        <Typography className="weather-card-title">{city}</Typography>
-        <Typography className="weather-card-body">
+        <Typography className="weatherCard-title">{city}</Typography>
+        <Typography className="weatherCard-body">
           {cardState == "loading"
             ? "Loading..."
             : "Error: could not retrieve weather data for this city."}
@@ -74,13 +72,13 @@ const WeatherCard: React.FC<{
     <WeatherCardContainer onDelete={onDelete}>
       <Grid container justify="space-around">
         <Grid item>
-          <Typography className="weather-card-title">
+          <Typography className="weatherCard-title">
             {weatherData.name}
           </Typography>
-          <Typography className="weather-card-temp">
+          <Typography className="weatherCard-temp">
             {Math.round(weatherData.main.temp)}
           </Typography>
-          <Typography className="weather-card-body">
+          <Typography className="weatherCard-body">
             Feels like {Math.round(weatherData.main.feels_like)}
           </Typography>
         </Grid>
@@ -88,7 +86,7 @@ const WeatherCard: React.FC<{
           {weatherData.weather.length > 0 && (
             <>
               <img src={getWeatherIconSrc(weatherData.weather[0].icon)} />
-              <Typography className="weather-card-body">
+              <Typography className="weatherCard-body">
                 {weatherData.weather[0].main}
               </Typography>
             </>
