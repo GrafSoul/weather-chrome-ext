@@ -1,8 +1,7 @@
-const OPEN_WEATHER_API_KEY = "34d0b40e6968ff9797838eaf30828326";
+const OPEN_WEATHER_API_KEY = "<INSERT OPEN WEATHER API KEY>";
 
 export interface OpenWeatherData {
   name: string;
-
   main: {
     feels_like: number;
     humidity: number;
@@ -11,25 +10,26 @@ export interface OpenWeatherData {
     temp_max: number;
     temp_min: number;
   };
-
   weather: {
     description: string;
     icon: string;
     id: number;
     main: string;
   }[];
-
   wind: {
     deg: number;
     speed: number;
   };
 }
 
+export type OpenWeatherTempScale = "metric" | "imperial";
+
 export async function fetchOpenWeatherData(
-  city: string
+  city: string,
+  tempScale: OpenWeatherTempScale
 ): Promise<OpenWeatherData> {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OPEN_WEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${tempScale}&appid=${OPEN_WEATHER_API_KEY}`
   );
 
   if (!res.ok) {
@@ -38,4 +38,8 @@ export async function fetchOpenWeatherData(
 
   const data: OpenWeatherData = await res.json();
   return data;
+}
+
+export function getWeatherIconSrc(iconCode: string) {
+  return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
